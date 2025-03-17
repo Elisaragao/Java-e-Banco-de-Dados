@@ -1,13 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-
 public class ConsultarStatus {
     static void consulta(Scanner leitura) {
         System.out.println("Digite o título do livro para consulta:");
         String titulo = leitura.nextLine();
-        ArrayList<Livro> livros = Conexao.listarLivros();
+        ArrayList<Livro> livros = Livro.listar();
         boolean livroEncontrado = false;
-
         for (Livro livro : livros) {
             if (livro.titulo.equalsIgnoreCase(titulo)) {
                 livroEncontrado = true;
@@ -15,7 +13,6 @@ public class ConsultarStatus {
                 return;
             }
         }
-
         if (!livroEncontrado) {
             System.out.println("Livro não encontrado!");
         }

@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '7.1.0'
+}
+
+group 'com.example'
+version '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation files('lib/mysql-connector-j-9.2.0.jar')
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/']
+            include 'Biblioteca.java', 'Conexao.java', 'ConsultarStatus.java', 'LivroCadastro.java', 'LivroDevolver.java', 'LivroEmprestar.java', 'Livro.java', 'LivroListar.java'
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'Biblioteca'
+        )
+    }
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
